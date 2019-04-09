@@ -1,40 +1,54 @@
------------------------------------------------------------------------------------------
---
+----------------------------------------------------------------------------------------
 -- Created by: Wajd Mariam
--- Created on: April 7, 2019
------------------------------------------------------------------------------------------
 
-local calculateButton = display.newImageRect ("assets/calculateButton.png", 125, 125)
-calculateButton.x = 250	
-calculateButton.y = 150
+-- Created on: April 7, 2019
+
+-----------------------------------------------------------------------------------------
+local calculateButton = display.newImageRect ("assets/sprites/calculate.png", 125, 50)
+calculateButton.x = 160	
+calculateButton.y = 350
 calculateButton.id = "calculateButton"
 
-NumberTextfield = native.newTextField (160,285,155,40)
-NumberTextfield.id = "Number Textfield"
 
-display.setDafult ( "background" 255/255, 174/255, 0/255 )
 
-number.text = display.newText( "   Enter a number \n   either negative \n      or positive", display.contentCenterX, 185, native.systemFont,35)
-number.text: setFillColor ( 0, 0, 0 )
+Numberfield = native.newTextField( display.contentCenterX, display.contentCenterY + 35, 225, 40 )
 
-local function calculateButtonTouch(event)
-	end
+Numberfield.id = "Number textField"
 
-local Number = tonumber (NumberTextfield.text)
 
-if number < 0 then
-	number.text.text = "Negative Number"
+ResponseText = display.newText( " Enter a number \n   either negative \n      or positive", display.contentCenterX, 185, native.systemFont,20)
+ResponseText: setFillColor ( 255,255,255)
+
+
+
+local function calculateButtonTouch( event )
+
+
+
+local Number = tonumber (Numberfield.text)
+
+
+if Number < 0 then
+
+	print ("")
+	print ( "Negative Number")
+
+	ResponseText.text = "Negative Number"
 
 else
-
-    number.text.text = "Positive Number"
+    print ("")
+	print ( "Positive Number")
+    ResponseText.text = "Positive Number"
 
 end
 
-if number ==0 then
-	number.text.text = "Zero is Neutral"
+if Number == 0 then
+    print ("")
+	print ( "Zero Is Neutral")
+	ResponseText.text = "Zero is Neutral"
 
 end 
-end
+
+end 
 
 calculateButton:addEventListener ("touch", calculateButtonTouch)
